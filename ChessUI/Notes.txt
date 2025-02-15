@@ -1,0 +1,23 @@
+
+    1. A link to your git repository. (access must also be provided)
+    2. Description of the changes 
+    3. Thoughts on the existing code
+    4. Please submit a 2-3 minute video demonstrating your unit tests AND the total application working
+
+
+1. https://github.com/Snake-EyE-12/ChessGame
+2. I added the functionality of a game mode selection menu. In order to do this I had to make the main window not initialize the board, but instead create my menu.
+    Then, my menu followed the patterns of the other menus in the game to return all calls to the main window. The main window would then receive the selected mode
+    and initialize the board based on what it received. I liked how this turned out because it still builds the board UI, but waits for the selection to place the pieces.
+   For this selection, I had to create an enumeration which held the different game modes. I also created a factory to turn the game mode selection into a class. The
+    possible classes were a standard game mode and a chess 960 game mode. Both of these classes derive from a board setup class following the strategy pattern for
+    specific board-piece placement. This means that I had to move the original board setup code out of the board initialization method and into the standard game
+    mode setup. Finally, chess 960 board setup newly contains a different board setup method following the rules of Chess960.
+   Also added tests to make sure logic functionality of game mode selection and Chess960 board setup followed proper rules.
+3. I really enjoyed working with this project as I thought the existing code was built for extensibility and reusability. The initial board setup was all in one area
+    and was easy to move and modify. This is how I was able to move it out and into a different class in the first place. I found that it was also very easy to get pieces
+    for board placement as the board contained everything for construction, and the pieces could just be placed into the board with their constructor. Overall, the 
+    programming part of the project flowed very well with the existing code. However, my thoughts differ when looking at the UI section. I feel that the main window
+    handles too much of game initialization, window control, and player input. Building out my game mode selection window would have been a lot easier if the game did not
+    have to immediately start off inside the game. I did love how popup windows were bound to the main window. The observer pattern used here made it especially easy to
+    handle user input, which is one thing I was worried about after realizing I would have to create a selection menu interface.
